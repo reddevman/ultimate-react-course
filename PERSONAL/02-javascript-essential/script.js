@@ -135,7 +135,7 @@ function getBook(id) {
 // Objeto
 const book = getBook(2);
 book;
-const { title, author, pages, genres, ...rest } = book;
+const { title, author, pages, genres, publicationDate, hasMovieAdaptation, ...rest } = book;
 title;
 author;
 rest;
@@ -153,9 +153,21 @@ const updatedBook = {
 	// Add new property
 	moviePublicationDate: "2000-01-01",
 	// Modify property
-	pages: 1000,
+	pages: 1200,
 };
 updatedBook;
 
-const summary = `${title} by ${author} has ${pages} pages.`;
+const summary = `${title} by ${author} has ${pages} pages. Movie was releases in ${
+	publicationDate.split("-")[0]
+}. The book ${hasMovieAdaptation ? "has" : "does not have"} a movie adaptation.`;
 summary;
+
+const pagesRange = pages >= 1000 ? "long" : "short";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
+
+// Arrow functions
+const pubDate = (str) => str.split("-")[0];
+console.log(pubDate(publicationDate));
+
+// Short circuit
